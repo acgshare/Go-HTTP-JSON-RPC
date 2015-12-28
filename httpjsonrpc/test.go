@@ -5,10 +5,10 @@ package httpjsonrpc
 // license that can be found in the LICENSE file.
 
 import (
-    "json"
+    "encoding/json"
     "io/ioutil"
     "log"
-    "http"
+    "net/http"
     "strings"
 )
 
