@@ -12,11 +12,17 @@ import (
     "strings"
 )
 
-func Call(address string, method string, id interface{}, params []interface{})(map[string]interface{}, error){
+type resultContainer struct {
+Error interface{}          `json:"error"`
+Result json.RawMessage `json:"result"`
+Id interface{} `json:"id"`
+}
+
+func Call(address string, method string, id interface{}, params []interface{})(*resultContainer, error){
     data, err := json.Marshal(map[string]interface{}{
         "method": method,
         "id":     id,
-        "params": params,
+        //"params": params,
     })
     if err != nil {
         log.Fatalf("Marshal: %v", err)
@@ -34,12 +40,13 @@ func Call(address string, method string, id interface{}, params []interface{})(m
         log.Fatalf("ReadAll: %v", err)
     	return nil, err
     }
-    result := make(map[string]interface{})
+    log.Printf("Unmarshal: %v", string(body))
+    var result resultContainer
     err = json.Unmarshal(body, &result)
     if err != nil {
         log.Fatalf("Unmarshal: %v", err)
     	return nil, err
     }
     //log.Println(result)
-    return result, nil
+    return &result, nil
 }
