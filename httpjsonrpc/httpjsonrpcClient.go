@@ -22,7 +22,7 @@ func Call(address string, method string, id interface{}, params []interface{})(*
     data, err := json.Marshal(map[string]interface{}{
         "method": method,
         "id":     id,
-        //"params": params,
+        "params": params,
     })
     if err != nil {
         log.Fatalf("Marshal: %v", err)
