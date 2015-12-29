@@ -40,7 +40,6 @@ func Call(address string, method string, id interface{}, params []interface{})(*
         log.Fatalf("ReadAll: %v", err)
     	return nil, err
     }
-    log.Printf("Unmarshal: %v", string(body))
     var result resultContainer
     err = json.Unmarshal(body, &result)
     if err != nil {
