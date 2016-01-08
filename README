@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/acgshare/Go-HTTP-JSON-RPC.svg?branch=master)](https://travis-ci.org/acgshare/Go-HTTP-JSON-RPC)
+
 EDIT: Bitcoin-spacific API has been moved to https://github.com/ThePiachu/GoBitcoinAPI .
 
 This is a work-in-progress implementation of HTTP JSON-RPC in Google Go. Any help is appreciated.
